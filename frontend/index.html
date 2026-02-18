@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>House Price Predictor</title>
+  <style>
+    body { font-family: Arial; max-width: 550px; margin: 30px auto; }
+    input, select, button { width: 100%; padding: 10px; margin: 6px 0; }
+    .card { border: 1px solid #ddd; padding: 16px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🏠 House Price Predictor</h2>
+
+    <label>Area</label>
+    <input id="area" type="number" placeholder="Area" value="5000">
+    <label>Bedrooms</label>
+    <input id="bedrooms" type="number" placeholder="Bedrooms" value="3">
+    <label>Bathrooms</label>
+    <input id="bathrooms" type="number" placeholder="Bathrooms" value="2">
+    <label>Stories</label>
+    <input id="stories" type="number" placeholder="Stories" value="1">
+    <label>Parking</label>
+    <input id="parking" type="number" placeholder="Parking" value="1">
+
+    <label>Mainroad</label>
+    <select id="mainroad"><option>yes</option><option>no</option></select>
+
+    <label>Guestroom</label>
+    <select id="guestroom"><option>yes</option><option>no</option></select>
+
+    <label>Basement</label>
+    <select id="basement"><option>yes</option><option>no</option></select>
+
+    <label>Hotwaterheating</label>
+    <select id="hotwaterheating"><option>yes</option><option>no</option></select>
+
+    <label>Airconditioning</label>
+    <select id="airconditioning"><option>yes</option><option>no</option></select>
+
+    <label>Prefarea</label>
+    <select id="prefarea"><option>yes</option><option>no</option></select>
+
+    <label>Furnishing</label>
+    <select id="furnishingstatus">
+      <option value="unfurnished">unfurnished</option>
+      <option value="semi-furnished">semi-furnished</option>
+      <option value="furnished">furnished</option>
+    </select>
+
+    <button onclick="predict()">Predict</button>
+    <h3 id="result"></h3>
+  </div>
+
+  <script>
+    async function predict() {
+      const payload = {
+        area: Number(area.value),
+        bedrooms: Number(bedrooms.value),
+        bathrooms: Number(bathrooms.value),
+        stories: Number(stories.value),
+        parking: Number(parking.value),
+        mainroad: mainroad.value,
+        guestroom: guestroom.value,
+        basement: basement.value,
+        hotwaterheating: hotwaterheating.value,
+        airconditioning: airconditioning.value,
+        prefarea: prefarea.value,
+        furnishingstatus: furnishingstatus.value
+      };
+
+      const res = await fetch("http://127.0.0.1:8000/predict", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      result.innerText = "Predicted Price: " + Math.round(data.predicted_price).toLocaleString();
+    }
+  </script>
+</body>
+</html>
