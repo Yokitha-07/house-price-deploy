@@ -3,11 +3,95 @@
 <head>
   <meta charset="utf-8" />
   <title>House Price Predictor</title>
-  <style>
+  <!-- <style>
     body { font-family: Arial; max-width: 550px; margin: 30px auto; }
     input, select, button { width: 100%; padding: 10px; margin: 6px 0; }
     .card { border: 1px solid #ddd; padding: 16px; border-radius: 10px; }
-  </style>
+  </style> -->
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.2s;
+  }
+
+  input:focus, select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102,126,234,0.5);
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  #result {
+    text-align: center;
+    margin-top: 15px;
+    color: #222;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .card {
+      margin: 15px;
+      padding: 20px;
+    }
+  }
+</style>
 </head>
 <body>
   <div class="card">
