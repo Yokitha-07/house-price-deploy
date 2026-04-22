@@ -8,7 +8,7 @@ It uses a trained regression model deployed with FastAPI and a simple HTML/JavaS
 ## 🚀 Live Demo
 
 - Frontend (AWS Amplify): https://main.dztk3kh4peeu8.amplifyapp.com/
-- Backend API (Render): https://house-price-deploy.onrender.com  
+<!-- - Backend API (Render): https://house-price-deploy.onrender.com  -->
 
 ---
 
